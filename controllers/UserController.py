@@ -6,23 +6,23 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 def index():
-    ...
+    return 'success'
 
 def register():
-    pass
+    return 'success'
 
 
 def store():
-    ...
+    return 'success'
 
 
 def show(userId):
-    ...
+    return 'success'
 
 
 def update(userId):
-    ...
+    return 'success'
 
 
 def destroy(userId):
-    ...
+    return 'success'

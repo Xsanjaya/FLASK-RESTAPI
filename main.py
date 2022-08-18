@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 db.init_app(app)
-
 migrate = Migrate(app, db)
 
 app.register_blueprint(user_route, url_prefix='/users')
