@@ -1,21 +1,21 @@
-from flask import redirect, url_for, request, abort
-from flask import jsonify
+import json
+from flask import request
 from models.User import User
 from models import db
-from utils import hashing
-from utils.helpers import dict_helper
+from utils import text2hash
 from utils.auth_handler import AuthHandler
 
 auth = AuthHandler()
 
 def index():
     users = db.session.query(User).all()
+    
     result = {
         "success" : True,
         "message" : "User All",
-        "data"    : [dict_helper(users)]
+        "data"    : [ dict(r.list()) for r in users ]
     }
-    return jsonify(result)
+    return json.dumps(result)
 
 
 def register():
@@ -23,7 +23,7 @@ def register():
     name     = req['name']
     email    = req['email']
     password = auth.hash_password( req['password'] )
-    token    = hashing(email)
+    token    = text2hash(email)
 
     try:
         user = User(name=name, email=email, password=password, token=token)
@@ -34,7 +34,7 @@ def register():
         result = {
             "success" : True,
             "message" : "Create User",
-            "data"    : [user.serialize()]
+            "data"    : [user.profile()]
         }
 
     except Exception as err:
@@ -44,7 +44,7 @@ def register():
             "data"    : [str(err)]
         }
 
-    return jsonify(result)
+    return json.dumps(result)
 
 
 def show(userId):

@@ -1,8 +1,7 @@
-from unittest import result
-from flask import request, jsonify
+import json
+from flask import request
 from models.User import User
 from models import db
-from utils.helpers import dict_helper
 from utils.auth_handler import AuthHandler
 
 auth_handler = AuthHandler()
@@ -21,7 +20,7 @@ def login():
             "message" : "Email is Taken",
             "data"    : []
         }
-        return jsonify(result)
+        return json.dumps(result)
 
     token = auth_handler.encode_token(user.email)
     result = {
@@ -31,7 +30,7 @@ def login():
                 'profile' : user.serialize(), 
                 'token'   : token}
         }
-    return jsonify(result)
+    return json.dumps(result)
 
 
 def logout():
