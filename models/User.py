@@ -11,12 +11,12 @@ class User(db.Model):
     created_at 	= db.Column('created_at', db.DateTime, default=db.func.NOW())
     updated_at 	= db.Column('updated_at', db.DateTime, default=db.func.NOW(), onupdate=db.func.NOW())
 
-    @property
+    # @property
     def serialize(self):
         return {
             'id'    : self.id,
             'name'  : self.name,
-            'email'     : self.city,
-            'password'  : self.state,
-            'token'     : self.address
+            'email'     : self.email,
+            'password'  : self.password,
+            'token'     : self.token
         }
