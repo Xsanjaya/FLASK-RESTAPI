@@ -1,7 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_migrate import Migrate
-from models.User import db
-from routes.UserRoute import user_route
+from models import db
+from routes.api.UserRoute import user_route
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -9,12 +9,10 @@ app.config.from_object('config')
 db.init_app(app)
 migrate = Migrate(app, db)
 
-app.register_blueprint(user_route, url_prefix='/users')
+### ROUTE API ###
+app.register_blueprint(user_route, url_prefix='/api/users')
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
+### ROUTE WEB ###
 
 if __name__ == '__main__':
     app.debug = True

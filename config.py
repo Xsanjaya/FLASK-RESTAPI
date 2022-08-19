@@ -9,7 +9,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 
 # Connect to the database
-SQLALCHEMY_DATABASE_URI = 'sqlite:///flask_restapi.sqlite'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///database.sqlite'
 
 # Turn off the Flask-SQLAlchemy event system and warning
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+SQLALCHEMY_TRACK_MODIFICATIONS = True

@@ -1,12 +1,16 @@
-import sys
 from flask import render_template, redirect, url_for, request, abort
+from flask import jsonify
 from models.User import User
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from models import db
 
 def index():
-    return 'success'
+    # users = db.session.all()
+    result = {
+        "success" : True,
+        "message" : "User All",
+        "data"    : []
+    }
+    return jsonify(result)
 
 def register():
     return 'success'
