@@ -1,10 +1,10 @@
-from lib2to3.pgen2 import token
 from flask import redirect, url_for, request, abort
 from flask import jsonify
 from models.User import User
 from models import db
+from utils import hashing
 from utils.helpers import dict_helper
-from utils.jwt_handler import AuthHandler
+from utils.auth_handler import AuthHandler
 
 auth = AuthHandler()
 
@@ -18,12 +18,12 @@ def index():
     return jsonify(result)
 
 
-def store():
+def register():
     req = request.json
     name     = req['name']
     email    = req['email']
     password = auth.hash_password( req['password'] )
-    token    = auth.encode_token(email)
+    token    = hashing(email)
 
     try:
         user = User(name=name, email=email, password=password, token=token)
