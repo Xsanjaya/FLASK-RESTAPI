@@ -27,7 +27,7 @@ def login():
             "success" : True,
             "message" : "Login Success",
             "data"    : {
-                'profile' : user.serialize(), 
+                'profile' : user.list(), 
                 'token'   : token}
         }
     return json.dumps(result)

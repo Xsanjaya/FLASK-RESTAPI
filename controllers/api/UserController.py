@@ -13,7 +13,7 @@ def index():
     result = {
         "success" : True,
         "message" : "User All",
-        "data"    : [ dict(r.list()) for r in users ]
+        "data"    : [ dict(user.list()) for user in users ]
     }
     return json.dumps(result)
 

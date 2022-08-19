@@ -1,3 +1,4 @@
+from datetime import datetime as dt
 from models import db
 
 class User(db.Model):
@@ -11,19 +12,19 @@ class User(db.Model):
     created_at 	= db.Column('created_at', db.DateTime, default=db.func.NOW())
     updated_at 	= db.Column('updated_at', db.DateTime, default=db.func.NOW(), onupdate=db.func.NOW())
 
-    
     def list(self):
         return {
-            'name'       : self.name,
-            'email'      : self.email,
-            'created_at' : 'created_at',
+            'name'    : self.name,
+            'email'   : self.email,
+            'created' : dt.strftime(self.created_at, '%d-%m-%Y %H:%M'),
         }
 
     def profile(self):
         return {
             'name'  : self.name,
             'email' : self.email,
-            'token' : self.token   
+            'token' : self.token,
+            'created' : dt.strftime(self.created_at, '%d-%m-%Y %H:%M'),   
         }
     
     @property
