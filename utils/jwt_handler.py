@@ -9,6 +9,8 @@ class AuthHandler():
     pwd_context     = CryptContext(schemes=["bcrypt"], deprecated="auto")
     # JWT_SECRET      = config.JWT_SECRET
     # JWT_ALGORITHM   = config.JWT_ALGORITHM 
+    JWT_SECRET      = JWT_SECRET
+    JWT_ALGORITHM   = JWT_ALGORITHM 
 
     def hash_password(self, password):
         return self.pwd_context.hash(password)

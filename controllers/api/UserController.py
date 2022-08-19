@@ -25,12 +25,26 @@ def store():
     password = auth.hash_password( req['password'] )
     token    = auth.encode_token(email)
 
-    user = User(name=name, email=email, password=password, token=token)
-    
-    db.session.add(user)
-    db.session.commit()
+    try:
+        user = User(name=name, email=email, password=password, token=token)
+        
+        db.session.add(user)
+        db.session.commit()
 
-    return user
+        result = {
+            "success" : True,
+            "message" : "Create User",
+            "data"    : [user.serialize()]
+        }
+
+    except Exception as err:
+        result = {
+            "success" : False,
+            "message" : "Create User Error",
+            "data"    : [str(err)]
+        }
+
+    return jsonify(result)
 
 
 def show(userId):
