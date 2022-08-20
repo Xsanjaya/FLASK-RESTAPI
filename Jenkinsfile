@@ -18,7 +18,7 @@ pipeline {
         cd C:\\APP\\FlaskAPI
         flask db init
         flask db migrate
-        nssm restart flaskapi
+        nssm restart flask-api
         '''
       }
     }
