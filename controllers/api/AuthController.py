@@ -40,8 +40,7 @@ def login():
     req = request.json
     email    = req['email']
     password = req['password']
-    token    = str(uuid.uuid4())
-   
+
     user =  db.session.query(User).filter(User.email == email).first()
 
     if (user is None) or (not auth_handler.verify_password(password, user.password)):
@@ -52,7 +51,7 @@ def login():
         }
         return json.dumps(result)
 
-    token = auth_handler.token_encode(token)
+    token = auth_handler.token_encode(user.token)
     login_user(user)
     result = {
             "success" : True,

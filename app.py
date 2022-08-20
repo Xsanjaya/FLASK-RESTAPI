@@ -4,9 +4,10 @@ from flask_login import LoginManager
 from models import db
 from routes.api.UserRoute import user_route
 from routes.api.AuthRoute import auth_route
+from config import AppConfig
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object(AppConfig)
 
 login_manager = LoginManager()
 login_manager.init_app(app)

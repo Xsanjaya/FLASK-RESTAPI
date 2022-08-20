@@ -1,21 +1,20 @@
-import json
+import json, jwt
+from functools import wraps
 from flask import request, make_response
-import jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
-from functools import wraps
+from models import db
+
 
 from models.User import User
 
-from config import JWT_ALGORITHM, JWT_SECRET
+from config import Settings
 
 
 class AuthHandler():
     pwd_context     = CryptContext(schemes=["bcrypt"], deprecated="auto")
-    # JWT_SECRET      = config.JWT_SECRET
-    # JWT_ALGORITHM   = config.JWT_ALGORITHM 
-    JWT_SECRET      = JWT_SECRET
-    JWT_ALGORITHM   = JWT_ALGORITHM 
+    JWT_SECRET      = Settings.JWT_SECRET
+    JWT_ALGORITHM   = Settings.JWT_ALGORITHM  
 
     def hash_password(self, password):
         return self.pwd_context.hash(password)
@@ -52,19 +51,26 @@ class AuthHandler():
             token = None
             if 'x-token' in request.headers:
                 token = request.headers['x-token']
+            
             if not token:
                 return json.dumps({'message' : str(request.headers)})
-    
+
             try:
-                data = jwt.decode(token, self.JWT_SECRET, self.JWT_ALGORITHM)['sub']
-                print(data)
-                current_user = User.query.filter_by(token=data).first()
+                data = self.token_decode(token=token)
+                user = db.session.query(User).filter(User.token==data).first()
+                if user is None:
+                    return json.dumps({
+                        'message' : 'Token is invalid !!',
+                        'error'   : str(e)
+                })
             except Exception as e:
                 return json.dumps({
                     'message' : 'Token is invalid !!',
                     'error'   : str(e)
                 })
             # returns the current logged in users contex to the routes
-            return  f(current_user, *args, **kwargs)
+            return  f(*args, **kwargs)
 
         return decorated
+
+
