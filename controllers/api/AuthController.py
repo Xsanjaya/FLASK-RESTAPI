@@ -1,5 +1,6 @@
 import json
-from flask import request
+from flask import request, redirect
+from flask_login import login_user, current_user, logout_user, login_required
 from models.User import User
 from models import db
 from utils.auth_handler import AuthHandler
@@ -23,6 +24,7 @@ def login():
         return json.dumps(result)
 
     token = auth_handler.encode_token(user.email)
+    login_user(user)
     result = {
             "success" : True,
             "message" : "Login Success",
@@ -33,5 +35,7 @@ def login():
     return json.dumps(result)
 
 
+@login_required
 def logout():
-    pass
+    logout_user()
+    return redirect('/')

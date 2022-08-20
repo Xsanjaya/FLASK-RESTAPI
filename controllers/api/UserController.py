@@ -1,5 +1,6 @@
 import json
 from flask import request
+from flask_login import current_user, login_required
 from models.User import User
 from models import db
 from utils import text2hash
@@ -47,9 +48,16 @@ def register():
     return json.dumps(result)
 
 
+@login_required
 def show(userId):
-    return 'success'
+    if current_user.is_authenticated:
+        resp = {"result": 200,
+                "data": current_user.to_json()}
+    else:                                                                                                                    
+        resp = {"result": 401,
+                "data": {"message": "user no login"}}
 
+    return json.dumps(resp)
 
 def update(userId):
     return 'success'
