@@ -14,13 +14,16 @@ pipeline {
         tar -xf ${JOB_NAME}.tar.gz
         rm ${JOB_NAME}.tar.gz
         mv -i ${JOB_NAME}/*  FLASK-API/
-        source MYENV/bin/activate
+        rm -rf ${JOB_NAME}
         '''
       }
     }
     stage('Runing APP') {
       steps {
         sh '''
+        pwd
+        cd ~/pypro/
+        source MYENV/bin/activate
         cd ~/pypro/FLASK-RESTAPI/
         flask db init
         flask db migrate
