@@ -1,2 +1,2 @@
-source .MyENV/bin/activate
+source ../.MyENV/bin/activate
 pip3 install -r requirements.txt
