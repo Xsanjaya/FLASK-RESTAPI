@@ -22,8 +22,8 @@ pipeline {
       steps {
         sh '''
         cd ~/pypro/
-        chmod +x envsetup.sh
-        ./envsetup.sh
+        chmod +x FLASK-API/envsetup.sh
+        ./FLASK-API/envsetup.sh
         cd ~/pypro/FLASK-API/
         flask db init
         flask db migrate
