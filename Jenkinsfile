@@ -6,9 +6,8 @@ pipeline {
     stage('PREPARATION') {
       steps {
         sh '''
-        @echo "STARTING DEPLOYMENT ${JOB_NAME}"
+        echo "STARTING DEPLOYMENT ${JOB_NAME}"
         cd ..
-        @echo pwd
         tar -czf ${JOB_NAME}.tar.gz ${JOB_NAME}
         mv ~/.jenkins/workspace/${JOB_NAME}.tar.gz ~/pypro/${JOB_NAME}.tar.gz
         cd ~/pypro
