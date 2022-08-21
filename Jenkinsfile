@@ -8,7 +8,7 @@ pipeline {
         sh '''
         @echo "STARTING DEPLOYMENT ${JOB_NAME}"
         cd ..
-        tar -czf ${JOB_NAME}.tar.gz ${JOB_NAME}/
+        tar -czf ${JOB_NAME}.tar.gz ${JOB_NAME}
         mv ~/.jenkins/workspace/${JOB_NAME}.tar.gz ~/pypro/${JOB_NAME}.tar.gz
         cd ~/pypro
         tar -xf ${JOB_NAME}.tar.gz
