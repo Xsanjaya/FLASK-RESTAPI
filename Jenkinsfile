@@ -12,7 +12,8 @@ pipeline {
         mv ~/.jenkins/workspace/${JOB_NAME}.tar.gz ~/pypro/${JOB_NAME}.tar.gz
         cd ~/pypro
         tar -xf ${JOB_NAME}.tar.gz
-        mv -i ${JOB_NAME}/*  FLASK-RESTAPI/
+        rm ${JOB_NAME}.tar.gz
+        mv -i ${JOB_NAME}/*  FLASK-API/
         source MYENV/bin/activate
         '''
       }
