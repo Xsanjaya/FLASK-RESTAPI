@@ -21,10 +21,9 @@ pipeline {
     stage('Runing APP') {
       steps {
         sh '''
-        cd ~/pypro/
-        chmod +x FLASK-API/envsetup.sh
-        ./FLASK-API/envsetup.sh
         cd ~/pypro/FLASK-API/
+        chmod +x envsetup.sh
+        ./envsetup.sh
         flask db init
         flask db migrate
         flask db upgrade
