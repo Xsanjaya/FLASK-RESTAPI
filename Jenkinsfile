@@ -22,7 +22,8 @@ pipeline {
       steps {
         sh '''
         cd ~/pypro/
-        sudo -s .MyENV/bin/activate
+        chmod +x envsetup.sh
+        ./envsetup.sh
         cd ~/pypro/FLASK-API/
         flask db init
         flask db migrate
