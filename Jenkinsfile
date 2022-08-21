@@ -22,7 +22,7 @@ pipeline {
       steps {
         sh '''
         cd ~/pypro/
-        source MYENV/bin/activate
+        MYENV/bin/activate
         cd ~/pypro/FLASK-API/
         flask db init
         flask db migrate
