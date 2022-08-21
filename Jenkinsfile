@@ -22,8 +22,7 @@ pipeline {
       steps {
         sh '''
         cd ~/pypro/FLASK-API/
-        chmod +x envsetup.sh
-        ./envsetup.sh
+        pip install -r requirements.txt
         flask db init
         flask db migrate
         flask db upgrade
