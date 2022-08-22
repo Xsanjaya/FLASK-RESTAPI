@@ -6,9 +6,9 @@
   <h3 align="center">Flask App </h3>
 
   <p align="center">
-    FlaskApp
+    FlaskApp is python web application
     <br/>
-    Note This Project Is Still W.I.P
+    with MVC structure
     <br/>
     <br/>
     <a href="https://readme.shaankhan.dev"><strong>View Demo »</strong></a>
