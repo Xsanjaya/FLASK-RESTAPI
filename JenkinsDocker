@@ -6,6 +6,7 @@ pipeline {
     stage('PREPARATION') {
       steps {
         sh '''
+        whoami
         docker build -t flask-api:1.1 .
         '''
       }
