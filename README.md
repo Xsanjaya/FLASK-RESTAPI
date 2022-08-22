@@ -1,9 +1,19 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/Xsanjaya/ASSETS/main/FlaskApp.png" width="400"></a></p>
-
 <p align="center">
-<a href="#"> <img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"> </a>
-<a href="#"> <img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"> </a>
-<a href="#"> <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"> </a>
-</p>
+  <a href="https://github.com/Xsanjaya/FlaskApp">
+    <img src="https://raw.githubusercontent.com/Xsanjaya/ASSETS/main/FlaskApp.png" alt="Logo" width="120" height="120">
+  </a>
 
-## About Flask RESTAPI
+  <h3 align="center">Flask App </h3>
+
+  <p align="center">
+    FlaskApp
+    <br/>
+    Note This Project Is Still W.I.P
+    <br/>
+    <br/>
+    <a href="https://readme.shaankhan.dev"><strong>View Demo »</strong></a>
+    <br/>
+    <br/>
+  </p>
+  
+</p>
