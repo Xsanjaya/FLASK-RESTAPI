@@ -5,6 +5,7 @@ COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
 
+RUN python -m pip install --upgrade
 RUN pip install -r requirements.txt
 
 ENTRYPOINT [ "python" ]
