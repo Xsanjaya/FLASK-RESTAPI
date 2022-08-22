@@ -7,15 +7,15 @@ pipeline {
       steps {
         sh '''
         whoami
-        docker build -t flask-api:1.1 .
+        docker-compose build
         '''
       }
     }
     stage('Runing APP') {
       steps {
         sh '''
-        docker container stop flask-api
-        docker run -d -p 5000:5000 flask-api:1.1
+        docker-compose down
+        docker-compose up
         '''
       }
     }
