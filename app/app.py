@@ -24,4 +24,4 @@ app.register_blueprint(user_route, url_prefix='/api/users')
 
 if __name__ == '__main__':
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0')
