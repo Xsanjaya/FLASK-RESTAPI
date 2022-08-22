@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/Xsanjaya/FlaskApp">
-    <img src="https://raw.githubusercontent.com/Xsanjaya/ASSETS/main/FlaskApp.png" alt="Logo" width="120" height="120">
+    <img src="https://raw.githubusercontent.com/Xsanjaya/ASSETS/main/FlaskApp.png" alt="Logo" width="400">
   </a>
 
   <h3 align="center">Flask App </h3>
