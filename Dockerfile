@@ -5,6 +5,7 @@ COPY requirements.txt /app/requirements.txt
 COPY .env.example /app/.env
 
 WORKDIR /app
+ADD . /app
 
 RUN pip install -r requirements.txt
 
