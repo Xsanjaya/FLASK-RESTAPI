@@ -16,4 +16,7 @@ services:
       - /home/superman/dockerVolume/flaskapp:/app/databases:rw
     environment:
       - APP_NAME=FlaskApp
-    
+   
+networks:
+  net-gateway:
+    external: true
