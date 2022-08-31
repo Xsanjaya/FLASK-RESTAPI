@@ -13,7 +13,7 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - /home/superman/dockerVolume/flaskapp:rw:/app/databases:rw
+      - /home/superman/dockerVolume/flaskapp:/app/databases:rw
     environment:
       - APP_NAME=FlaskApp
     
